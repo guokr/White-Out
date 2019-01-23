@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-from whiteout.model import LevenshteinModel
+from white_out.model import LevenshteinModel
 
 words = ["hi", "there", "therea","our", "friend"]
 mm = LevenshteinModel(words=words, max_distance=2)
