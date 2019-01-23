@@ -1,0 +1,4 @@
+numpy
+python-Levenshtein
+git+https://github.com/kpu/kenlm.git@328cc2995202e84d29e3773203d29cdd6cc07132#egg=kenlm
+sortedcontainers
