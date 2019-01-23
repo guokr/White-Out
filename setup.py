@@ -4,11 +4,20 @@ import sys
 if sys.version_info<(3,):
     sys.exit("Sorry, Python 3 is required for Caver")
 
-with open("requirements.txt", "r") as f:
-    reqs = [l for l in f.read().splitlines() if l]
+dep_private = []
+dep_pypi = []
+
+def get_requirements():
+    with open("requirements.txt", "r") as f:
+        reqs = [l for l in f.read().splitlines() if l]
+        for _ in reqs:
+            if _.startswith("git"):
+                dep_private.append(_)
+            else:
+                dep_pypi.append(_)
 
 setup(
-    name="whiteout",
+    name="white-out",
     version="0.1",
     description="auto correction lib",
     # long_description=readme,
@@ -28,5 +37,6 @@ setup(
             # 'trickster_train=trickster::train',
         ]
     },
-    install_requires=reqs
+    install_requires=dep_pypi,
+    dependency_links=dep_private
 )
