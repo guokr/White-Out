@@ -239,8 +239,8 @@ class Trie:
         if self.dict_storage:
             answer = list(self.graph[index].keys())
         else:
-            answer =  [i for i, elem in enumerate(self.graph[index])
-                       if elem != Trie.NO_NODE]
+            answer = [i for i, elem in enumerate(self.graph[index])
+                      if elem != Trie.NO_NODE]
         if not return_indexes:
             answer = [(self.alphabet[i] if i >= 0 else " ") for i in answer]
         return answer
@@ -421,7 +421,6 @@ def precompute_future_symbols(trie, n, allow_spaces=False):
     if n == 0:
         return
     if trie.is_terminated and trie.precompute_symbols:
-        # символы уже предпосчитаны
         return
     for index, final in enumerate(trie.final):
         trie.data[index] = [set() for i in range(n)]
@@ -434,7 +433,6 @@ def precompute_future_symbols(trie, n, allow_spaces=False):
             children = set(trie._get_children(index))
             for child in children:
                 node_data[d] |= trie.data[child][d - 1]
-            # в случае, если разрешён возврат по пробелу в стартовое состояние
             if allow_spaces and final:
                 node_data[d] |= trie.data[trie.root][d - 1]
     trie.terminated = True

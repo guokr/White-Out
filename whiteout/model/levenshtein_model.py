@@ -32,7 +32,6 @@ class LevenshteinModel():
 
     def __call__(self, batch: Iterable[Iterable[str]], *args, **kwargs) -> List[List[List[Tuple[float, str]]]]:
         """Propose candidates for tokens in sentences
-
         Args:
             batch: batch of tokenized sentences
 

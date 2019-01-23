@@ -79,7 +79,7 @@ class LevenshteinSearcher:
                     continue
                 for curr_low, curr_cost in transducer.operation_costs[curr_up].items():
                     new_g = g + curr_cost
-                    if new_g > d:  #если g > d, то h можно не вычислять
+                    if new_g > d:
                         continue
                     if curr_low == " ":
                         if allow_spaces and trie.is_final(index):
